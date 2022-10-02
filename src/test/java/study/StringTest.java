@@ -31,7 +31,7 @@ public class StringTest {
     @DisplayName("abc 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습테스트를 구현한다.")
     void string_char_at_test() {
         String input = "abc";
-        assertThat(input).isEqualTo('a');
+        assertThat(input.charAt(0)).isEqualTo('a');
     }
 
     @Test

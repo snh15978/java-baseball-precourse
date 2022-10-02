@@ -62,4 +62,13 @@ class PlayerTest {
             Arguments.of(Arrays.asList(1, 9, 3, 7))
         );
     }
+
+    @Test
+    @DisplayName("1~9 이외의 숫자를 입력할 경우 exception이 발생한다.")
+    void input_number_zero_exception_test() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() ->
+                new Player(Arrays.asList(0, 1, 2))
+            ).withMessageMatching("입력된 숫자의 범위를 벗어났습니다.");
+    }
 }

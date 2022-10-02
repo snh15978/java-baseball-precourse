@@ -20,11 +20,9 @@ public class Player {
         if (numbers.size() != TOTAL_NUMBER_COUNT) {
             throw new IllegalArgumentException("입력된 숫자의 갯수가 3개 초과했습니다.");
         }
-
         if (numbers.size() != new HashSet<>(numbers).size()) {
             throw new IllegalArgumentException("입력된 숫자가 중복입니다.");
         }
-
         for (Integer number : numbers) {
             validateNumberRange(number);
         }

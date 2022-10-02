@@ -1,6 +1,8 @@
 package baseball.domain;
 
 public class CheckReport {
+    private static final int WINNING_COUNT = 3;
+
     private int totalCount;
     private int strikeCount;
     private int ballCount;
@@ -21,5 +23,9 @@ public class CheckReport {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public boolean winningCheck() {
+        return strikeCount == WINNING_COUNT;
     }
 }

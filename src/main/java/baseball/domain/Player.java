@@ -43,7 +43,7 @@ public class Player {
     private int strikeCount(List<BallNumber> competitorNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < competitorNumbers.size(); i++) {
-            if (competitorNumbers.get(i) == numbers.get(i)) {
+            if (competitorNumbers.get(i).equals(numbers.get(i))) {
                 strikeCount++;
             }
         }

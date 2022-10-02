@@ -5,7 +5,7 @@ import baseball.domain.Player;
 import baseball.domain.RandomBallNumberGenerator;
 
 public class Application {
-    private static final int FINISH = 2;
+    private static final int RESTART = 1;
 
     public static void main(String[] args) {
         startGame();
@@ -17,15 +17,21 @@ public class Application {
     }
 
     private static void playing(Player computer, Player user) {
-        while (true) {
+        boolean isWin = true;
+        while (isWin) {
             user = inputNumbers(user);
-            if (PlayView.printGameReport(computer.checkingBallNumber(user.getNumbers()))) {
-                if (PlayView.inputEndOrRestart() == FINISH) {
-                    break;
-                }
-                computer = makeComputer();
-            }
+            isWin = isWin(computer, user, isWin);
         }
+        if (PlayView.inputEndOrRestart() == RESTART) {
+            startGame();
+        }
+    }
+
+    private static boolean isWin(Player computer, Player user, boolean isWin) {
+        if (PlayView.printGameReport(computer.checkingBallNumber(user.getNumbers()))) {
+            isWin = false;
+        }
+        return isWin;
     }
 
     private static Player inputNumbers(Player user) {

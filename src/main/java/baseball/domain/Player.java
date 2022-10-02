@@ -38,11 +38,16 @@ public class Player {
     }
 
     private int containsCount(List<BallNumber> competitorNumbers) {
-        int totalCount = 0;
+        int containsCount = 0;
         for (BallNumber competitorNumber : competitorNumbers) {
-            if (numbers.contains(competitorNumber)) {
-                totalCount++;
-            }
+            containsCount = checkingContains(containsCount, competitorNumber);
+        }
+        return containsCount;
+    }
+
+    private int checkingContains(int totalCount, BallNumber competitorNumber) {
+        if (numbers.contains(competitorNumber)) {
+            totalCount++;
         }
         return totalCount;
     }
@@ -50,9 +55,14 @@ public class Player {
     private int strikeCount(List<BallNumber> competitorNumbers) {
         int strikeCount = 0;
         for (int i = 0; i < competitorNumbers.size(); i++) {
-            if (competitorNumbers.get(i).equals(numbers.get(i))) {
-                strikeCount++;
-            }
+            strikeCount = checkingStrike(competitorNumbers, strikeCount, i);
+        }
+        return strikeCount;
+    }
+
+    private int checkingStrike(List<BallNumber> competitorNumbers, int strikeCount, int i) {
+        if (competitorNumbers.get(i).equals(numbers.get(i))) {
+            strikeCount++;
         }
         return strikeCount;
     }

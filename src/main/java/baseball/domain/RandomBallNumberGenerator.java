@@ -14,10 +14,14 @@ public class RandomBallNumberGenerator {
         List<BallNumber> ballNumbers = new ArrayList<>();
         while (ballNumbers.size() < TOTAL_NUMBER_COUNT) {
             BallNumber ballNumber = BallNumber.of(pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER));
-            if (!ballNumbers.contains(ballNumber)) {
-                ballNumbers.add(ballNumber);
-            }
+            addNumber(ballNumbers, ballNumber);
         }
         return ballNumbers;
+    }
+
+    private static void addNumber(List<BallNumber> ballNumbers, BallNumber ballNumber) {
+        if (!ballNumbers.contains(ballNumber)) {
+            ballNumbers.add(ballNumber);
+        }
     }
 }

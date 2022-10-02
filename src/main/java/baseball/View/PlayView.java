@@ -43,10 +43,15 @@ public class PlayView {
 
     private static String createStrikeMessage(CheckReport checkReport, String resultMessage) {
         if (checkReport.getStrikeCount() != 0) {
-            if (resultMessage.length() > 0) {
-                resultMessage += " ";
-            }
+            resultMessage = addSpace(resultMessage);
             resultMessage += checkReport.getStrikeCount() + "스트라이크";
+        }
+        return resultMessage;
+    }
+
+    private static String addSpace(String resultMessage) {
+        if (resultMessage.length() > 0) {
+            resultMessage += " ";
         }
         return resultMessage;
     }

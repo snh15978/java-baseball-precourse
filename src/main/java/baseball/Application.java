@@ -20,18 +20,18 @@ public class Application {
         boolean isWin = true;
         while (isWin) {
             user = inputNumbers(user);
-            isWin = isWin(computer, user, isWin);
+            isWin = isWin(computer, user);
         }
         if (PlayView.inputEndOrRestart() == RESTART) {
             startGame();
         }
     }
 
-    private static boolean isWin(Player computer, Player user, boolean isWin) {
+    private static boolean isWin(Player computer, Player user) {
         if (PlayView.printGameReport(computer.checkingBallNumber(user.getNumbers()))) {
-            isWin = false;
+            return false;
         }
-        return isWin;
+        return true;
     }
 
     private static Player inputNumbers(Player user) {

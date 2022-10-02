@@ -22,4 +22,31 @@ public class Player {
     public List<BallNumber> getNumbers() {
         return numbers;
     }
+
+    public CheckReport checkingBallNumber(List<BallNumber> competitorNumbers) {
+        int totalCount = containsCount(competitorNumbers);
+        int strikeCount = strikeCount(competitorNumbers);
+        int ballCount = totalCount - strikeCount;
+        return new CheckReport(totalCount, strikeCount, ballCount);
+    }
+
+    private int containsCount(List<BallNumber> competitorNumbers) {
+        int totalCount = 0;
+        for (BallNumber competitorNumber : competitorNumbers) {
+            if (numbers.contains(competitorNumber)) {
+                totalCount++;
+            }
+        }
+        return totalCount;
+    }
+
+    private int strikeCount(List<BallNumber> competitorNumbers) {
+        int strikeCount = 0;
+        for (int i = 0; i < competitorNumbers.size(); i++) {
+            if (competitorNumbers.get(i) == numbers.get(i)) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
 }

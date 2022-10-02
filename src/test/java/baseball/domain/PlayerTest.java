@@ -30,23 +30,6 @@ class PlayerTest {
     }
 
     @ParameterizedTest
-    @DisplayName("중복된 숫자를 입력할 경우 exception이 발생한다.")
-    @MethodSource("parameterProviderWhenInputDuplicateNumber")
-    void duplicate_number_exception_test(List<BallNumber> numbers) {
-        assertThatExceptionOfType(IllegalArgumentException.class)
-            .isThrownBy(() ->
-                new Player(numbers)
-            ).withMessageMatching("입력된 숫자가 중복입니다.");
-    }
-
-    private static Stream<Arguments> parameterProviderWhenInputDuplicateNumber() {
-        return Stream.of(
-            Arguments.of(Arrays.asList(BallNumber.of(5), BallNumber.of(9), BallNumber.of(9))),
-            Arguments.of(Arrays.asList(BallNumber.of(1), BallNumber.of(1), BallNumber.of(3)))
-        );
-    }
-
-    @ParameterizedTest
     @DisplayName("3자리 이상 입력할 경우 exception이 발생한다.")
     @MethodSource("parameterProviderWhenInputSizeOverThree")
     void number_size_exception_test(List<BallNumber> numbers) {

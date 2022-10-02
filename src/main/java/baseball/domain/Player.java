@@ -8,6 +8,14 @@ public class Player {
     private List<BallNumber> numbers;
 
     public Player(List<BallNumber> numbers) {
+        setNumber(numbers);
+    }
+
+    public void changeNumber(List<BallNumber> numbers) {
+        setNumber(numbers);
+    }
+
+    private void setNumber(List<BallNumber> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }

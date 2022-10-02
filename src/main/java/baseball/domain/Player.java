@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -10,7 +9,7 @@ public class Player {
 
     public Player(List<BallNumber> numbers) {
         validate(numbers);
-        this.numbers = new ArrayList<>(numbers);
+        this.numbers = numbers;
     }
 
     private void validate(List<BallNumber> numbers) {

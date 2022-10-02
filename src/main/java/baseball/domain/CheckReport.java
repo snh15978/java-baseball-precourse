@@ -10,4 +10,16 @@ public class CheckReport {
         this.strikeCount = strikeCount;
         this.ballCount = ballCount;
     }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 }

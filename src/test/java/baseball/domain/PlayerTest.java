@@ -54,4 +54,17 @@ class PlayerTest {
                 new Player(Arrays.asList(BallNumber.of(0), BallNumber.of(1), BallNumber.of(2)))
             ).withMessageMatching("입력된 숫자의 범위를 벗어났습니다.");
     }
+
+    @Test
+    @DisplayName("공격자와 수비자의 숫자 3개가 일치한다.")
+    void three_strike_test() {
+        Player computer = new Player(new RandomBallNumberGenerator().generateBallNumbers());
+        Player player = new Player(computer.getNumbers());
+
+        CheckReport checkReport = computer.checkingBallNumber(player.getNumbers());
+
+        assertThat(checkReport.getStrikeCount()).isEqualTo(3);
+        assertThat(checkReport.getTotalCount()).isEqualTo(3);
+        assertThat(checkReport.getBallCount()).isEqualTo(0);
+    }
 }

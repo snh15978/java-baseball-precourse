@@ -27,7 +27,7 @@ public class Player {
     }
 
     private void validateNumberRange(Integer number) {
-        if (number >= MINIMUM_NUMBER || number <= MAXIMUM_NUMBER) {
+        if (number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER) {
             throw new IllegalArgumentException("입력된 숫자의 범위를 벗어났습니다.");
         }
     }

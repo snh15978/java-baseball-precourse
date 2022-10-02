@@ -1,8 +1,8 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Player {
     private static final int TOTAL_NUMBER_COUNT = 3;
@@ -11,14 +11,18 @@ public class Player {
 
     private List<Integer> numbers;
 
-    public Player(Set<Integer> numbers) {
+    public Player(List<Integer> numbers) {
         validate(numbers);
         this.numbers = new ArrayList<>(numbers);
     }
 
-    private void validate(Set<Integer> numbers) {
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != TOTAL_NUMBER_COUNT) {
-            throw new IllegalArgumentException("입력된 숫자의 갯수가 3개가 아니거나 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException("입력된 숫자의 갯수가 3개 초과했습니다.");
+        }
+
+        if (numbers.size() != new HashSet<>(numbers).size()) {
+            throw new IllegalArgumentException("입력된 숫자가 중복입니다.");
         }
 
         for (Integer number : numbers) {

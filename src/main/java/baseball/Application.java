@@ -1,7 +1,6 @@
 package baseball;
 
 import baseball.View.PlayView;
-import baseball.domain.CheckReport;
 import baseball.domain.Player;
 import baseball.domain.RandomBallNumberGenerator;
 
@@ -20,8 +19,7 @@ public class Application {
     private static void playing(Player computer, Player user) {
         while (true) {
             user = inputNumbers(user);
-            CheckReport checkReport = computer.checkingBallNumber(user.getNumbers());
-            if (PlayView.printGameReport(checkReport)) {
+            if (PlayView.printGameReport(computer.checkingBallNumber(user.getNumbers()))) {
                 if (PlayView.inputEndOrRestart() == FINISH) {
                     break;
                 }
